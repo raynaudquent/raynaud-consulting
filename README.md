@@ -9,14 +9,16 @@ Site vitrine statique (HTML + CSS, sans dépendance) de l'activité de coaching 
 | `mentions-legales.html` | Mentions légales (compléter les champs entre crochets) |
 | `404.html` | Page d'erreur |
 | `favicon.svg` | Icône d'onglet |
+| `styles.css` | Styles communs à toutes les pages |
+| `conseils/` | Articles de conseils vente (référencement) |
 | `og-image.png` | Image affichée quand le lien est partagé (LinkedIn, WhatsApp…) |
 | `robots.txt`, `sitemap.xml` | Référencement Google |
 
 ## À compléter
 1. **Calendly** : créer un événement « Échange découverte 30 min » sur calendly.com, puis coller son lien dans `index.html` à la ligne `var CALENDLY_URL = '';`. Tous les boutons « Prendre rendez-vous » ouvriront alors la réservation en fenêtre.
 2. **Photo** : ajouter `quentin.jpg` (format portrait 4:5) et remplacer le bloc « QR » de la section À propos (le code est en commentaire juste à côté).
-3. **E-mail** : vérifier que contact@brame-store.com existe, ou le remplacer partout.
-4. **Témoignages** : la section est masquée (`hidden`). La remplir et retirer `hidden` après les 3 clients pilotes.
+3. **SIREN** : compléter dans le pied de page de `index.html`.
+4. **Avis clients** : la section `#avis` est masquée (`hidden`). La remplir et retirer `hidden` après les premiers clients.
 5. **Mentions légales** : SIRET, adresse, régime de TVA.
 
 ## Publication avec GitHub Pages
