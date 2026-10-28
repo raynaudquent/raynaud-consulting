@@ -15,7 +15,7 @@ Site vitrine statique (HTML + CSS, sans dépendance) de l'activité de coaching 
 | `robots.txt`, `sitemap.xml` | Référencement Google |
 
 ## À compléter
-1. **Prise de rendez-vous** : page de réservation Google Agenda (raynaud.quent@gmail.com) : https://calendar.app.google/7eh8m2vPy84mkDx29. Créneaux et durée modifiables dans Google Agenda › Pages de réservation.
+1. **Prise de rendez-vous** : page Calendly (compte infos@brame-store.com) : https://calendly.com/raynaud-quent/30min. Créneaux et durée modifiables dans Calendly › Types d’événements.
 4. **Avis clients** : la section `#avis` est masquée (`hidden`). La remplir et retirer `hidden` après les premiers clients.
 
 ## Publication avec GitHub Pages
