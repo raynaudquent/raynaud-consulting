@@ -20,7 +20,7 @@ Site vitrine statique (HTML + CSS, sans dépendance) de l'activité de coaching 
 
 ## Publication avec GitHub Pages
 Settings → Pages → Source : « Deploy from a branch », branche `main`, dossier `/ (root)`.
-Adresse : https://raynaudquent.github.io/raynaud-consulting/
+Adresse : https://www.brame-store.com/ (domaine chez Hostinger, DNS pointés vers GitHub Pages)
 
 ## Nom de domaine
 Quand un domaine est choisi (ex. raynaud-consulting.fr) : le renseigner dans Settings → Pages → Custom domain, configurer le DNS chez le registrar, puis remplacer l'adresse GitHub Pages dans `index.html` (canonical, og:url, og:image, JSON-LD), `robots.txt` et `sitemap.xml`.
