@@ -146,3 +146,4 @@ input:focus,select:focus,textarea:focus,a:focus-visible,.btn:focus-visible{outli
   .nav a.btn{width:100%;text-align:center}
   .hero .wrap{padding-top:56px;padding-bottom:110px}
 }
+.article p.eyebrow{color:var(--accent)}
