@@ -9,8 +9,9 @@
 window.ACADEMIE = {
   site: "https://www.brame-store.com",
   email: "infos@brame-store.com",
+  espaceClient: "https://raynaud-consulting.teachizy.fr/connexion",
   paiement: {
-    certificat: "https://buy.stripe.com/28E9AS0rv1tQ75BeY15gc00",          // Certificat à l'unité, 39 €
+    certificat: "https://raynaud-consulting.teachizy.fr/formations/les-fondamentaux-de-la-vente-en-magasin-specialise", // Certificat à l'unité, 39 € (version certifiante Teachizy)
     pass: "https://buy.stripe.com/bJe8wOdeha0mcpV3fj5gc01",                // Pass Certificats, 89 €
     bilanVendeur: "https://buy.stripe.com/5kQ14m2zD8WigGb3fj5gc02",        // Bilan Vendeur, 79 €
     bilanJeuDeRole: "https://buy.stripe.com/eVqcN43DH8Wi9dJ6rv5gc03",      // Bilan Jeu de rôle, 119 €

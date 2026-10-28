@@ -210,3 +210,5 @@ picture{display:contents}
 .crown{width:20px;height:20px;color:#D4A017;flex:none;filter:drop-shadow(0 1px 0 rgba(0,0,0,.15));animation:crown-glow 2.4s ease-in-out infinite}
 @keyframes crown-glow{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(-6deg)}}
 @media (min-width:1101px){.nav{gap:4px 16px;flex-wrap:nowrap}.nav a{font-size:.98rem;white-space:nowrap}.header .wrap{flex-wrap:nowrap}}
+.nav a.nav-client{display:inline-flex;align-items:center;gap:6px}
+.nav a.nav-client .ico-user{width:18px;height:18px}
