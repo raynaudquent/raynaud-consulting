@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certificat de réussite | Académie Raynaud Consulting</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#24473A">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="formation.css">
+</head>
+<body>
+<header class="header no-print">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">RC</span>
+      <span class="brand-name"><strong>Raynaud Consulting</strong><span>Académie vente</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="./">Académie</a>
+      <a href="verifier.html">Vérifier un certificat</a>
+    </nav>
+  </div>
+</header>
+
+<main class="cert-page" id="contenu">
+  <p class="alert no-print" id="introuvable" hidden>Ce certificat est introuvable. Vérifiez le numéro, ou <a href="verifier.html">recherchez-le ici</a>.</p>
+
+  <div class="cert" id="cert" hidden>
+    <div class="specimen" id="specimen" hidden>SPÉCIMEN</div>
+    <div class="cert-inner">
+      <div class="c-brand"><span class="c-mark">RC</span><strong>Raynaud Consulting</strong></div>
+      <p class="c-kicker">Académie vente · Sales Academy</p>
+      <h1 class="c-title">Certificat de réussite</h1>
+      <p class="c-title-en">Certificate of Achievement</p>
+      <p class="c-small">Décerné à · Awarded to</p>
+      <p class="c-name" id="c-nom"></p>
+      <p class="c-small" style="margin-top:1.6cqw">pour avoir suivi le cours et réussi son examen · for completing the course and passing its exam</p>
+      <p class="c-course" id="c-cours"></p>
+      <p class="c-title-en" id="c-cours-en" style="margin-top:.2cqw"></p>
+      <div class="c-facts">
+        <div><span id="c-duree"></span>Durée · Duration</div>
+        <div><span id="c-score"></span>Score à l'examen · Exam score</div>
+        <div><span id="c-date"></span><em id="c-date-en"></em></div>
+      </div>
+      <div class="c-foot">
+        <div class="c-sign">
+          <div class="sig">Q. Raynaud</div>
+          <strong>Quentin Raynaud</strong>
+          Coach vente, Raynaud Consulting · Sales coach
+        </div>
+        <div class="c-qr">
+          <div>N° <strong id="c-id" style="color:var(--ink)"></strong><br>Vérifier · Verify:<br><span id="c-url"></span></div>
+          <div id="c-qr"></div>
+        </div>
+      </div>
+      <p class="c-legal">Certificat de réussite délivré par Raynaud Consulting (SIREN 943 388 728). Ne constitue pas un diplôme ni une certification inscrite au RNCP. · Certificate of achievement issued by Raynaud Consulting; not a state-recognised diploma.</p>
+    </div>
+  </div>
+
+  <div class="cert-actions no-print" id="actions" hidden>
+    <button class="btn" type="button" onclick="window.print()">Enregistrer en PDF / Imprimer</button>
+    <a class="btn btn-light" id="btn-linkedin" target="_blank" rel="noopener" href="#">Ajouter à LinkedIn</a>
+    <a class="btn btn-light" id="btn-verif" href="#">Page de vérification</a>
+  </div>
+  <p class="note no-print" id="astuce" hidden>Pour le PDF : dans la fenêtre d'impression, choisissez « Enregistrer au format PDF », orientation paysage, sans marges.</p>
+</main>
+
+<script src="config.js"></script>
+<script src="js/qrcode.js"></script>
+<script src="js/registre.js"></script>
+<script>
+(function () {
+  var id = new URLSearchParams(location.search).get("id");
+  function introuvable() { document.getElementById("introuvable").hidden = false; }
+  if (!id) { introuvable(); return; }
+  Registre.chercher(id).then(function (c) {
+    if (!c) { introuvable(); return; }
+    var cours = Registre.cours[c.cours] || { fr: "Cours " + c.cours, en: "Course " + c.cours, heures: 4 };
+    var set = function (k, v) { document.getElementById(k).textContent = v; };
+    set("c-nom", c.nom);
+    set("c-cours", cours.fr);
+    set("c-cours-en", cours.en);
+    set("c-duree", cours.heures + " h");
+    set("c-score", c.score != null ? c.score + " / 20" : "Réussi");
+    set("c-date", Registre.dateFr(c.date));
+    set("c-date-en", "Délivré le · Issued " + Registre.dateEn(c.date));
+    set("c-id", c.id);
+    var verif = Registre.urlVerification(c.id);
+    set("c-url", verif.replace(/^https?:\/\//, "").replace("?id=", "?id=​"));
+    var qr = qrcode(0, "M"); qr.addData(verif); qr.make();
+    document.getElementById("c-qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+    document.getElementById("specimen").hidden = !c.specimen;
+    document.title = "Certificat " + c.id + " – " + c.nom + " | Raynaud Consulting";
+    var p = c.date.split("-");
+    document.getElementById("btn-linkedin").href = "https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME" +
+      "&name=" + encodeURIComponent(cours.fr) + "&organizationName=" + encodeURIComponent("Raynaud Consulting") +
+      "&issueYear=" + p[0] + "&issueMonth=" + parseInt(p[1], 10) +
+      "&certUrl=" + encodeURIComponent(Registre.urlCertificat(c.id)) + "&certId=" + encodeURIComponent(c.id);
+    document.getElementById("btn-verif").href = "verifier.html?id=" + encodeURIComponent(c.id);
+    document.getElementById("cert").hidden = false;
+    document.getElementById("actions").hidden = false;
+    document.getElementById("astuce").hidden = false;
+  }).catch(introuvable);
+})();
+</script>
+</body>
+</html>

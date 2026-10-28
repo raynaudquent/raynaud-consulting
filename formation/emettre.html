@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Émettre un certificat (outil interne) | Raynaud Consulting</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="formation.css">
+</head>
+<body>
+<main class="exam-wrap">
+  <p class="eyebrow">Outil interne</p>
+  <h1 style="font-weight:800;font-size:2rem;margin:4px 0 12px">Émettre un certificat</h1>
+  <p style="color:var(--body)">À utiliser quand le paiement est reçu. Recopiez les informations de la demande, contrôlez le code, puis ajoutez la ligne obtenue au registre.</p>
+  <form class="panel" id="f">
+    <div class="form-grid" style="margin-top:0">
+      <label>Nom sur le certificat<input id="nom" required></label>
+      <label>E-mail<input id="email" type="email" required></label>
+      <label>Cours<select id="cours"><option value="1">1 – Les fondamentaux de la vente</option></select></label>
+      <label>Score (sur 20)<input id="score" type="number" min="14" max="20" required></label>
+      <label>Date de l'examen<input id="date" type="date" required></label>
+      <label>Code de réussite<input id="code" required placeholder="C1-20261028-17-XXXXXXX" style="text-transform:uppercase"></label>
+    </div>
+    <button class="btn" type="submit">Contrôler et préparer</button>
+  </form>
+  <div id="out"></div>
+</main>
+<script src="config.js"></script>
+<script src="js/code.js"></script>
+<script src="js/registre.js"></script>
+<script>
+document.getElementById("f").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var v = function (id) { return document.getElementById(id).value.trim(); };
+  var attendu = CodeReussite.calculer(parseInt(v("cours"), 10), v("nom"), v("email"), parseInt(v("score"), 10), v("date"));
+  var out = document.getElementById("out");
+  if (attendu !== v("code").toUpperCase()) {
+    out.innerHTML = '<div class="alert"><strong>Code invalide.</strong> Le code ne correspond pas au nom, à l\'e-mail, au score ou à la date. Vérifiez la saisie (le nom doit être identique à celui de la demande) avant d\'émettre.</div>';
+    return;
+  }
+  fetch("certificats.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (data) {
+    var annee = new Date().getFullYear();
+    var max = 0;
+    (data.certificats || []).forEach(function (c) {
+      var m = /^RC-(\d{4})-(\d{4})$/.exec(c.id);
+      if (m && parseInt(m[1], 10) === annee) max = Math.max(max, parseInt(m[2], 10));
+    });
+    var id = "RC-" + annee + "-" + String(max + 1).padStart(4, "0");
+    var ligne = JSON.stringify({ id: id, nom: v("nom"), cours: parseInt(v("cours"), 10), score: parseInt(v("score"), 10), date: v("date") });
+    var lien = Registre.urlCertificat(id);
+    var mail = "Bonjour,\n\nFélicitations pour la réussite de votre examen. Votre certificat n° " + id + " est disponible ici :\n" + lien +
+      "\n\nDepuis cette page, vous pouvez l'enregistrer en PDF et l'ajouter à votre profil LinkedIn.\n\nBonne continuation,\nQuentin Raynaud\nRaynaud Consulting";
+    var esc = function (s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); };
+    out.innerHTML = '<div class="ok"><strong>Code valide.</strong> Numéro attribué : ' + id + '</div>' +
+      '<div class="panel" style="margin-top:16px"><h2>1. Ajouter au registre</h2>' +
+      '<p>Ouvrez <a target="_blank" rel="noopener" href="https://github.com/raynaudquent/raynaud-consulting/edit/main/formation/certificats.json">certificats.json sur GitHub</a>, ajoutez une virgule après la dernière ligne, collez la ligne ci-dessous, puis « Commit changes ».</p>' +
+      '<p class="code">' + esc(ligne) + '</p>' +
+      '<h2 style="margin-top:20px">2. Envoyer le certificat</h2><p>Quelques minutes après la publication, envoyez ce message à ' + esc(v("email")) + ' :</p>' +
+      '<p class="code" style="white-space:pre-wrap">' + esc(mail) + '</p>' +
+      '<p><a class="btn" href="mailto:' + encodeURIComponent(v("email")) + '?subject=' + encodeURIComponent("Votre certificat " + id) + '&body=' + encodeURIComponent(mail) + '">Ouvrir l\'e-mail</a></p></div>';
+  });
+});
+</script>
+</body>
+</html>

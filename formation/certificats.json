@@ -1,0 +1,5 @@
+{
+  "certificats": [
+    {"id": "RC-2026-0000", "nom": "Camille Exemple", "cours": 1, "score": 17, "date": "2026-10-28", "specimen": true}
+  ]
+}

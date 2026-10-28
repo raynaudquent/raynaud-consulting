@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examen du cours 1 : les fondamentaux de la vente | Académie Raynaud Consulting</title>
+<meta name="description" content="Examen gratuit du cours « Les fondamentaux de la vente en magasin spécialisé » : 20 questions, 30 minutes, réussite à 14/20.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#24473A">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="formation.css">
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">RC</span>
+      <span class="brand-name"><strong>Raynaud Consulting</strong><span>Académie vente</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="./">Académie</a>
+      <a href="cours-1.html">Revoir le cours</a>
+    </nav>
+  </div>
+</header>
+
+<main class="exam-wrap" id="contenu">
+  <p class="crumbs"><a href="./">Académie</a> › <a href="cours-1.html">Cours 1</a> › Examen</p>
+  <p class="eyebrow">Examen · Cours 1</p>
+  <h1 style="font-weight:800;font-size:clamp(1.8rem,3.6vw,2.4rem);margin:4px 0 24px">Les fondamentaux de la vente en magasin spécialisé</h1>
+
+  <!-- Unités non terminées -->
+  <section class="panel" id="ecran-verrou" hidden>
+    <h2>Terminez d'abord le cours</h2>
+    <p>L'examen s'ouvre quand les 8 unités du cours sont cochées comme terminées. Vous en avez terminé <strong id="nb-unites">0</strong> sur 8.</p>
+    <a class="btn btn-arrow" href="cours-1.html">Reprendre le cours</a>
+  </section>
+
+  <!-- Délai après un échec -->
+  <section class="panel" id="ecran-attente" hidden>
+    <h2>Prochaine tentative dans <span id="attente"></span></h2>
+    <p>Après un échec, il faut attendre 24 heures avant de repasser l'examen. Profitez-en pour revoir les unités indiquées.</p>
+    <p id="attente-revoir"></p>
+    <a class="btn btn-arrow" href="cours-1.html">Revoir le cours</a>
+  </section>
+
+  <!-- Présentation -->
+  <section class="panel" id="ecran-intro" hidden>
+    <h2>Avant de commencer</h2>
+    <ul class="rules">
+      <li><span>20</span>questions</li>
+      <li><span>30 min</span>pour répondre</li>
+      <li><span>14/20</span>pour réussir</li>
+      <li><span>Gratuit</span>certificat en option</li>
+    </ul>
+    <p>Une seule bonne réponse par question. Le chronomètre démarre quand vous cliquez sur « Commencer ». À la fin du temps, vos réponses sont envoyées automatiquement.</p>
+    <form id="form-intro">
+      <div class="form-grid">
+        <label>Prénom et nom<input type="text" id="nom" autocomplete="name" required maxlength="60" placeholder="Tel qu'il apparaîtra sur le certificat"></label>
+        <label>E-mail<input type="email" id="email" autocomplete="email" required placeholder="Pour recevoir votre certificat"></label>
+        <label class="check-line"><input type="checkbox" id="honneur" required> Je passe cet examen seul, sans aide extérieure.</label>
+      </div>
+      <p class="note" style="margin:0 0 16px">Ces informations restent sur votre appareil. Elles ne sont envoyées que si vous commandez un certificat.</p>
+      <button class="btn btn-arrow" type="submit">Commencer l'examen</button>
+    </form>
+  </section>
+
+  <!-- Examen -->
+  <section id="ecran-examen" hidden>
+    <div class="timer" role="timer" aria-live="off"><span>Temps restant</span><strong id="chrono">30:00</strong><span id="repondu">0 / 20</span></div>
+    <form id="form-examen" novalidate>
+      <div id="questions"></div>
+      <p class="alert" id="manque" hidden></p>
+      <button class="btn btn-arrow" type="submit">Valider mes réponses</button>
+    </form>
+  </section>
+
+  <!-- Résultat -->
+  <section class="panel result" id="ecran-resultat" hidden>
+    <p class="eyebrow" id="res-titre">Résultat</p>
+    <div class="score" id="res-score"></div>
+    <h2 id="res-message" style="margin-top:14px"></h2>
+    <p id="res-texte"></p>
+    <div id="res-reussite" hidden>
+      <p>Votre code de réussite : <span class="code" id="res-code"></span></p>
+      <label class="check-line" style="text-align:left;margin-top:16px"><input type="checkbox" id="renonce"> <span>J'accepte les <a href="conditions.html" target="_blank" rel="noopener">conditions de vente</a>, je demande l'émission de mon certificat dès mon paiement et je renonce à mon droit de rétractation une fois le certificat émis.</span></label>
+      <div class="btn-row" id="btns-commande" style="opacity:.5;pointer-events:none" aria-disabled="true">
+        <a class="btn" id="btn-certificat" href="#">Obtenir mon certificat · 39 €</a>
+        <a class="btn btn-light" id="btn-pass" href="#">Pass Certificats · 89 €</a>
+      </div>
+      <p class="note">Après votre paiement, votre certificat est émis à votre nom et vous recevez par e-mail, sous 2 jours ouvrés, le lien pour l'afficher, l'enregistrer en PDF et l'ajouter à LinkedIn. <a href="conditions.html">Conditions de vente</a>.</p>
+      <div class="ok" style="margin-top:18px;text-align:left">
+        <strong>Pour aller plus loin :</strong> le Bilan Vendeur (45 min en visio, 79 €) vous donne 3 axes de progrès et un plan d'action personnalisé.
+        <a data-pay="bilanVendeur" data-label="Bilan Vendeur (79 €)" href="./#bilans">Réserver un Bilan Vendeur</a>
+      </div>
+    </div>
+    <p id="res-revoir"></p>
+    <div class="btn-row" id="res-actions"></div>
+  </section>
+
+  <noscript><p class="alert">L'examen nécessite JavaScript. Activez-le dans votre navigateur pour continuer.</p></noscript>
+</main>
+
+<footer class="footer" style="margin-top:60px">
+  <div class="wrap">
+    <div><strong>Raynaud Consulting</strong><p>Académie en ligne</p></div>
+    <div><p><a href="mailto:infos@brame-store.com">infos@brame-store.com</a> · <a href="conditions.html">Conditions de vente</a></p><p>© 2026 Raynaud Consulting</p></div>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="js/paiement.js"></script>
+<script src="js/code.js"></script>
+<script src="js/questions-cours-1.js"></script>
+<script src="js/examen.js"></script>
+</body>
+</html>

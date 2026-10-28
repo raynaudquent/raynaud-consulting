@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vérifier un certificat | Académie Raynaud Consulting</title>
+<meta name="description" content="Vérifiez l'authenticité d'un certificat de réussite délivré par l'Académie Raynaud Consulting à partir de son numéro.">
+<link rel="canonical" href="https://www.brame-store.com/formation/verifier.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#24473A">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="formation.css">
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">RC</span>
+      <span class="brand-name"><strong>Raynaud Consulting</strong><span>Académie vente</span></span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="./">Académie</a>
+      <a class="btn" href="cours-1.html">Commencer gratuitement</a>
+    </nav>
+  </div>
+</header>
+
+<main class="exam-wrap" id="contenu">
+  <p class="crumbs"><a href="./">Académie</a> › Vérifier un certificat</p>
+  <p class="eyebrow">Vérification · Verification</p>
+  <h1 style="font-weight:800;font-size:clamp(1.8rem,3.6vw,2.4rem);margin:4px 0 12px">Vérifier un certificat</h1>
+  <p style="color:var(--body);margin:0 0 24px">Saisissez le numéro inscrit sur le certificat (par exemple RC-2026-0001) ou scannez son QR code. · Enter the certificate number or scan its QR code.</p>
+  <form class="panel" id="form-verif">
+    <div class="form-grid" style="margin:0 0 16px">
+      <label>Numéro du certificat · Certificate number<input type="text" id="num" required placeholder="RC-2026-0001" autocomplete="off" style="text-transform:uppercase"></label>
+    </div>
+    <button class="btn btn-arrow" type="submit">Vérifier</button>
+  </form>
+  <div id="resultat" aria-live="polite"></div>
+</main>
+
+<footer class="footer" style="margin-top:60px">
+  <div class="wrap">
+    <div><strong>Raynaud Consulting</strong><p>Académie en ligne · SIREN 943 388 728</p></div>
+    <div><p><a href="mailto:infos@brame-store.com">infos@brame-store.com</a></p><p>© 2026 Raynaud Consulting</p></div>
+  </div>
+</footer>
+<script src="config.js"></script>
+<script src="js/registre.js"></script>
+<script>
+(function () {
+  var champ = document.getElementById("num"), zone = document.getElementById("resultat");
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function verifier(id) {
+    zone.innerHTML = "";
+    Registre.chercher(id).then(function (c) {
+      if (!c) {
+        zone.innerHTML = '<div class="alert"><strong>Certificat introuvable · Not found.</strong> Aucun certificat ne porte le numéro ' + esc(id.toUpperCase()) +
+          '. Vérifiez la saisie ou écrivez à <a href="mailto:infos@brame-store.com">infos@brame-store.com</a>.</div>';
+        return;
+      }
+      var cours = Registre.cours[c.cours] || { fr: "Cours " + c.cours };
+      zone.innerHTML = '<div class="' + (c.specimen ? "alert" : "ok") + '">' +
+        (c.specimen ? "<strong>Spécimen · Specimen.</strong> Ce numéro correspond à un exemple, pas à un vrai certificat." :
+          "<strong>Certificat authentique · Valid certificate.</strong>") +
+        '<p style="margin:10px 0 0;color:inherit">Titulaire · Holder : <strong>' + esc(c.nom) + "</strong><br>Cours · Course : " + esc(cours.fr) +
+        "<br>Score : " + esc(c.score) + " / 20<br>Délivré le · Issued : " + esc(Registre.dateFr(c.date)) + "<br>Numéro · Number : " + esc(c.id) +
+        '</p><p style="margin:10px 0 0"><a href="certificat.html?id=' + encodeURIComponent(c.id) + '">Afficher le certificat · View certificate</a></p></div>';
+    }).catch(function () {
+      zone.innerHTML = '<div class="alert">Vérification impossible pour le moment. Réessayez dans quelques minutes.</div>';
+    });
+  }
+  document.getElementById("form-verif").addEventListener("submit", function (e) { e.preventDefault(); verifier(champ.value); });
+  var id = new URLSearchParams(location.search).get("id");
+  if (id) { champ.value = id; verifier(id); }
+})();
+</script>
+</body>
+</html>
