@@ -17,7 +17,6 @@ Site vitrine statique (HTML + CSS, sans dépendance) de l'activité de coaching 
 ## À compléter
 1. **Prise de rendez-vous** : page de réservation Google Agenda (raynaud.quent@gmail.com) : https://calendar.app.google/7eh8m2vPy84mkDx29. Créneaux et durée modifiables dans Google Agenda › Pages de réservation.
 4. **Avis clients** : la section `#avis` est masquée (`hidden`). La remplir et retirer `hidden` après les premiers clients.
-5. **Mentions légales** : forme juridique, adresse, régime de TVA.
 
 ## Publication avec GitHub Pages
 Settings → Pages → Source : « Deploy from a branch », branche `main`, dossier `/ (root)`.
