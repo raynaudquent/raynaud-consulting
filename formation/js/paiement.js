@@ -13,7 +13,7 @@
     }
     var sujet = options.sujet || "Demande – " + (options.label || cle);
     var corps = options.corps || "Bonjour,\n\nJe souhaite réserver : " + (options.label || cle) +
-      ".\n\nNom :\nMagasin :\nTéléphone :\nDisponibilités :\n\nMerci.";
+      ".\n\nNom :\nEntreprise / magasin :\nSIRET :\nTéléphone :\nDisponibilités :\n\nMerci.";
     return { href: "mailto:" + cfg.email + "?subject=" + encodeURIComponent(sujet) + "&body=" + encodeURIComponent(corps), externe: false };
   }
 

@@ -171,7 +171,7 @@
       var corps = function (offre) {
         return "Bonjour,\n\nJ'ai réussi l'examen du cours 1 et je souhaite commander : " + offre + ".\n\n" +
           "Nom sur le certificat : " + res.nom + "\nE-mail : " + res.email + "\nScore : " + res.score + "/" + res.total +
-          "\nDate : " + res.date + "\nCode de réussite : " + res.code + "\n\nMerci de m'envoyer le lien de paiement.";
+          "\nDate : " + res.date + "\nCode de réussite : " + res.code + "\n\nEntreprise :\nSIRET :\nAdresse de facturation :\n\nMerci de m'envoyer le lien de paiement.";
       };
       window.AcademiePaiement.brancher($("btn-certificat"), "certificat", { email: res.email, reference: res.code,
         sujet: "Certificat cours 1 – " + res.nom, corps: corps("Certificat à l'unité (39 €)") });
