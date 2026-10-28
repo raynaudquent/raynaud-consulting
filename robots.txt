@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://raynaudquent.github.io/cote-comptoir/sitemap.xml
