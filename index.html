@@ -9,6 +9,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.brame-store.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#24473A">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -18,9 +19,8 @@
 <meta property="og:url" content="https://www.brame-store.com/">
 <meta property="og:image" content="https://www.brame-store.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
+<link rel="preload" href="fonts/archivo-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
@@ -29,7 +29,7 @@
   "name": "Raynaud Consulting",
   "description": "Coaching et formation vente terrain pour commerces spécialisés et concessions : panier moyen, vente additionnelle, préparation des salons.",
   "url": "https://www.brame-store.com/",
-  "image": ["https://www.brame-store.com/og-image.png", "https://www.brame-store.com/img/quentin-raynaud.jpg"],
+  "image": ["https://www.brame-store.com/og-image.png", "https://www.brame-store.com/img/quentin-raynaud-760.jpg"],
   "telephone": "+33743506722",
   "email": "infos@brame-store.com",
   "priceRange": "350 € – 1 400 €",
@@ -45,6 +45,54 @@
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pack salon et portes ouvertes"}, "price": "700", "priceCurrency": "EUR"},
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pack Relance 3 mois"}, "price": "1400", "priceCurrency": "EUR"}
   ]}
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Combien coûte un accompagnement ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Les tarifs sont affichés sur cette page : 350 € la demi-journée d'atelier, 450 € le diagnostic magasin, 1 400 € le pack « Relance 3 mois ». Le premier échange de 30 minutes est gratuit et sans engagement."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Dans quelle zone intervenez-vous ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En Haute-Savoie, Savoie, Ain, Isère, dans la région lyonnaise et en Suisse romande. Les déplacements sont inclus jusqu'à 50 km autour de Seyssel, puis sur devis."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Faut-il fermer le magasin pendant un atelier ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. Les ateliers se calent sur vos horaires : avant l'ouverture, pendant un creux de journée ou sur une demi-journée de fermeture habituelle."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Vos prestations sont-elles finançables par l'OPCO ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pas pour le moment : les prestations sont facturées directement au magasin. Si vous avez besoin d'un financement, parlons-en lors du premier échange pour étudier une solution."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Travaillez-vous uniquement avec des magasins moto ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Non. La méthode s'applique à tous les commerces spécialisés où le conseil fait la vente : vélo, sport et outdoor, auto, loisirs motorisés, équipement de la maison."
+   }
+  }
+ ]
 }
 </script>
 </head>
@@ -68,7 +116,7 @@
 
 <header class="header">
   <div class="wrap">
-    <a class="brand" href="#accueil" aria-label="Raynaud Consulting, retour en haut">
+    <a class="brand" href="#accueil">
       <span class="brand-mark" aria-hidden="true">RC</span>
       <span class="brand-name"><strong>Raynaud Consulting</strong><span>Coaching vente terrain</span></span>
     </a>
@@ -79,6 +127,7 @@
       <a href="#tarifs">Tarifs</a>
       <a href="#a-propos">À propos</a>
       <a href="#conseils">Conseils</a>
+      <a href="#faq">FAQ</a>
       <a class="btn" href="https://calendar.app.google/7eh8m2vPy84mkDx29" target="_blank" rel="noopener">Prendre rendez-vous</a>
     </nav>
   </div>
@@ -173,7 +222,10 @@
     <p class="eyebrow">Méthode</p>
     <h2>Du terrain, de la rigueur, des chiffres</h2>
     <figure class="photo">
-      <img src="img/atelier-vendeurs.jpg" alt="Quentin Raynaud anime un atelier vendeurs autour d'une valise moto en aluminium" width="1200" height="800" loading="lazy">
+      <picture>
+        <source type="image/webp" srcset="img/atelier-vendeurs-600.webp 600w, img/atelier-vendeurs-1200.webp 1200w" sizes="(max-width: 1240px) 100vw, 1152px">
+        <img src="img/atelier-vendeurs-1200.jpg" srcset="img/atelier-vendeurs-600.jpg 600w, img/atelier-vendeurs-1200.jpg 1200w" sizes="(max-width: 1240px) 100vw, 1152px" alt="Quentin Raynaud anime un atelier vendeurs autour d'une valise moto en aluminium" width="1200" height="800" loading="lazy" decoding="async">
+      </picture>
       <figcaption>Atelier vendeurs : on travaille sur les vrais produits du magasin, en main.</figcaption>
     </figure>
     <div class="steps" style="margin-top:36px">
@@ -207,7 +259,10 @@
 
 <section class="block" id="a-propos">
   <div class="wrap about">
-    <div class="portrait"><img src="img/quentin-raynaud.jpg" alt="Quentin Raynaud, coach vente terrain" width="760" height="950" loading="lazy"></div>
+    <div class="portrait"><picture>
+        <source type="image/webp" srcset="img/quentin-raynaud-380.webp 380w, img/quentin-raynaud-760.webp 760w" sizes="(max-width: 700px) 90vw, 380px">
+        <img src="img/quentin-raynaud-760.jpg" srcset="img/quentin-raynaud-380.jpg 380w, img/quentin-raynaud-760.jpg 760w" sizes="(max-width: 700px) 90vw, 380px" alt="Quentin Raynaud, coach vente terrain" width="760" height="950" loading="lazy" decoding="async">
+      </picture></div>
     <div class="about-text">
       <p class="eyebrow">À propos</p>
       <h2>Quentin Raynaud, un vendeur de terrain</h2>
@@ -241,6 +296,20 @@
         <span class="thumb">Salons</span>
         <span class="body"><h3>Rentabiliser un salon : avant, pendant, après</h3><p>La liste de contrôle pour qu'un stand rapporte plus qu'il ne coûte.</p><span class="meta">Lecture 5 min</span></span>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Questions fréquentes</p>
+    <h2>Vos questions, mes réponses</h2>
+    <div class="faq">
+      <details class="faq-item"><summary>Combien coûte un accompagnement ?</summary><p>Les tarifs sont affichés sur cette page : 350 € la demi-journée d'atelier, 450 € le diagnostic magasin, 1 400 € le pack « Relance 3 mois ». Le premier échange de 30 minutes est gratuit et sans engagement.</p></details>
+      <details class="faq-item"><summary>Dans quelle zone intervenez-vous ?</summary><p>En Haute-Savoie, Savoie, Ain, Isère, dans la région lyonnaise et en Suisse romande. Les déplacements sont inclus jusqu'à 50 km autour de Seyssel, puis sur devis.</p></details>
+      <details class="faq-item"><summary>Faut-il fermer le magasin pendant un atelier ?</summary><p>Non. Les ateliers se calent sur vos horaires : avant l'ouverture, pendant un creux de journée ou sur une demi-journée de fermeture habituelle.</p></details>
+      <details class="faq-item"><summary>Vos prestations sont-elles finançables par l'OPCO ?</summary><p>Pas pour le moment : les prestations sont facturées directement au magasin. Si vous avez besoin d'un financement, parlons-en lors du premier échange pour étudier une solution.</p></details>
+      <details class="faq-item"><summary>Travaillez-vous uniquement avec des magasins moto ?</summary><p>Non. La méthode s'applique à tous les commerces spécialisés où le conseil fait la vente : vélo, sport et outdoor, auto, loisirs motorisés, équipement de la maison.</p></details>
     </div>
   </div>
 </section>

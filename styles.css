@@ -1,3 +1,7 @@
+@font-face{font-family:'Archivo';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/archivo-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/archivo-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/source-sans-3-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/source-sans-3-latin-600-normal.woff2) format('woff2')}
 :root{
   --ground:#F6F4EF; --paper:#FFFFFF; --ink:#1C2321; --muted:#55605B; --body:#3F4A45;
   --forest:#24473A; --forest-ink:#DCE5DF; --sand:#E7C9A9; --line:#DDD8CC;
@@ -151,3 +155,17 @@ input:focus,select:focus,textarea:focus,a:focus-visible,.btn:focus-visible{outli
 .photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
 .photo figcaption{margin-top:10px;color:var(--muted);font-size:.9375rem}
 .portrait img{width:100%;height:100%;object-fit:cover}
+.faq{display:flex;flex-direction:column;gap:12px;margin-top:28px;max-width:860px}
+.faq-item{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:0 22px}
+.faq-item summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.1rem;padding:18px 0;list-style-position:outside}
+.faq-item p{margin:0 0 18px;color:var(--body)}
+picture{display:contents}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--accent);flex:none}
+.faq-item[open] summary::after{content:"–"}
+@media (max-width:700px){
+  table{min-width:0}
+  th,td{padding:12px 14px;font-size:.95rem}
+  td+td+td,th+th+th{white-space:nowrap}
+}
