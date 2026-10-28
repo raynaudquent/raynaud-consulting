@@ -212,3 +212,5 @@ picture{display:contents}
 @media (min-width:1101px){.nav{gap:4px 16px;flex-wrap:nowrap}.nav a{font-size:.98rem;white-space:nowrap}.header .wrap{flex-wrap:nowrap}}
 .nav a.nav-client{display:inline-flex;align-items:center;gap:6px}
 .nav a.nav-client .ico-user{width:18px;height:18px}
+@media (min-width:1101px){.brand-name strong{white-space:nowrap}}
+@media (min-width:1101px) and (max-width:1400px){.nav{gap:4px 12px}.nav a{font-size:.92rem}}
