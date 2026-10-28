@@ -303,14 +303,5 @@
   </div>
 </footer>
 
-<script>
-var CALENDLY_URL = '';
-document.addEventListener('click', function (e) {
-  var a = e.target.closest('[data-calendly]');
-  if (!a || !CALENDLY_URL || !window.Calendly) return;
-  e.preventDefault();
-  Calendly.initPopupWidget({ url: CALENDLY_URL + '?hide_gdpr_banner=1&primary_color=a34b22' });
-});
-</script>
 </body>
 </html>
